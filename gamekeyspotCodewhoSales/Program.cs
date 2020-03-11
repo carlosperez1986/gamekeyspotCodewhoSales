@@ -23,12 +23,23 @@ namespace gamekeyspot
         //const string strcnn = @"Data Source=82.223.108.84;Initial Catalog=gamekeyspotdb; User ID=sa;Password=Bp9Ea51VGI; Packet Size=4096";
         //const string strcnn = @"Data Source=localhost,1433;Initial Catalog=gamekeyspotdb;User ID=sa;Password=Carloselias23.;Packet Size=4096";
 
-        const string client_id = "1051f676d039d085e4a62f9020b699b1";
+        //reales
+        //const string client_id = "4980cfafb42bdfc983b817d131abd5a1";
 
-        const string client_secret = "$2a$10$LprVXVd62l..QVc.YWP82epBEl3aovep0uqTUFnXUhJoFUkhSkBlm";
+        //const string client_secret = "$2a$10$dez2qZOcqpJAV30P5/wtt.J.9Tq4cSghrgkDD9wmxcaaBM.ykCsaG";
+
+        //sandbox
+
+        const string client_id = "ff72ce315d1259e822f47d87d02d261e";
+
+        const string client_secret = "$2a$10$E2jVWDADFA5gh6zlRVcrlOOX01Q/HJoT6hXuDMJxek.YEo.lkO2T6";
+        const string CLIENT_SIGNATURE = "ad3e71ee-7d85-44d1-8209-9befd61615572";
 
         public static string token;
 
+        const string urlcode = "https://sandbox.codeswholesale.com/v2/";
+        //const string urltoken = "https://api.codeswholesale.com/oauth/token?";
+        const string urltoken = "https://sandbox.codeswholesale.com/oauth/token?";
 
         public static void Main(string[] args)
         {
@@ -76,7 +87,7 @@ namespace gamekeyspot
 
                         Console.WriteLine("Comienza lectura de Categorias - " + DateTime.Now);
 
-                        WebRequest webCategoria = WebRequest.Create("https://api.codeswholesale.com/v2/platforms?access_token=" + token);
+                        WebRequest webCategoria = WebRequest.Create(urlcode + "platforms?access_token=" + token);
 
                         using (WebResponse respcategoria = webCategoria.GetResponse())
                         {
@@ -138,7 +149,7 @@ namespace gamekeyspot
                                         #region token new
                                         try
                                         {
-                                            WebRequest requesttoken = WebRequest.Create("https://api.codeswholesale.com/oauth/token?grant_type=client_credentials&client_id=" + client_id + "&client_secret=" + client_secret);
+                                            WebRequest requesttoken = WebRequest.Create(urltoken + "grant_type=client_credentials&client_id=" + client_id + "&client_secret=" + client_secret);
 
                                             requesttoken.ContentType = "application/json;charset=UTF-8";
 
@@ -245,7 +256,7 @@ namespace gamekeyspot
                 {
                     try
                     {
-                        WebRequest request = WebRequest.Create("https://api.codeswholesale.com/v2/products?access_token=" + token);
+                        WebRequest request = WebRequest.Create(urlcode + "products?access_token=" + token);
 
                         request.Credentials = CredentialCache.DefaultCredentials;
 
@@ -583,7 +594,7 @@ namespace gamekeyspot
                                         #region token new
                                         try
                                         {
-                                            WebRequest requesttoken = WebRequest.Create("https://api.codeswholesale.com/oauth/token?grant_type=client_credentials&client_id=" + client_id + "&client_secret=" + client_secret);
+                                            WebRequest requesttoken = WebRequest.Create(urltoken + "grant_type=client_credentials&client_id=" + client_id + "&client_secret=" + client_secret);
 
                                             requesttoken.ContentType = "application/json;charset=UTF-8";
 
@@ -672,7 +683,7 @@ namespace gamekeyspot
                 {
 
 
-                    string url = "https://api.codeswholesale.com/v2/products/" + productoid + "/description?access_token=" + token;
+                    string url = urlcode + "products/" + productoid + "/description?access_token=" + token;
 
                     WebRequest request = WebRequest.Create(url);
 
@@ -843,7 +854,7 @@ namespace gamekeyspot
                                     #region token new
                                     try
                                     {
-                                        WebRequest requesttoken = WebRequest.Create("https://api.codeswholesale.com/oauth/token?grant_type=client_credentials&client_id=" + client_id + "&client_secret=" + client_secret);
+                                        WebRequest requesttoken = WebRequest.Create(urltoken + "grant_type=client_credentials&client_id=" + client_id + "&client_secret=" + client_secret);
 
                                         requesttoken.ContentType = "application/json;charset=UTF-8";
 
